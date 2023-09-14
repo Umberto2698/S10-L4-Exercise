@@ -1,6 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import { Heart, HeartFill } from "react-bootstrap-icons";
+import { Heart, HeartFill, Trash } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 
 const Job = ({ data }) => {
@@ -20,11 +20,12 @@ const Job = ({ data }) => {
       </Col>
       <Col xs={2} className="text-end">
         {location.pathname.includes("favourite") ? (
-          <HeartFill
+          <Trash
+            color="red"
             onClick={() => {
               dispatch({ type: "REMOVE_TO_FAVOURITE", payload: data._id });
             }}
-          ></HeartFill>
+          ></Trash>
         ) : favouritePositions.some((position) => position._id === data._id) ? (
           <HeartFill
             onClick={() => {
